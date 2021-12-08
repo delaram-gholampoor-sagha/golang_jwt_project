@@ -1,12 +1,14 @@
 package routes
 
 import (
-	controller "golang_jwt_project/controllers"
+	controller "github.com/Delaram-Gholampoor-Sagha/golang_jwt_project/controllers"
 
+	"github.com/Delaram-Gholampoor-Sagha/golang_jwt_project/middleware"
 	"github.com/gin-gonic/gin"
 )
 
 func UserRoutes(incomingRoutes *gin.Engine) {
-	incomingRoutes.Use(middleWare.Authenticate)
+	incomingRoutes.Use(middleware.Authenticate())
 	incomingRoutes.GET("/users", controller.GetUsers())
+	incomingRoutes.GET("/users/:user_id", controller.GetUser())
 }
